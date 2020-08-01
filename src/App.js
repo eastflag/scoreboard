@@ -6,10 +6,10 @@ import {Player} from './components/Player';
 class App extends React.Component {
   state = {
     players: [
-      {name: 'LDK', score: 30, id: 1},
-      {name: 'HONG', score: 40, id: 2},
-      {name: 'KIM', score: 50, id: 3},
-      {name: 'PARK', score: 60, id: 4},
+      {name: 'LDK', id: 1},
+      {name: 'HONG', id: 2},
+      {name: 'KIM', id: 3},
+      {name: 'PARK', id: 4},
     ]
   }
   // 1. 펑션 작성
