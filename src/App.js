@@ -27,6 +27,16 @@ class App extends React.Component {
 
   handleChangeScore = (id, delta) => {
     console.log('handleScore:', id, delta);
+    // 로직 구현
+    this.setState(prevState => {
+      const players = [ ...prevState.players ];
+      players.forEach(player => {
+        if (player.id === id) {
+          player.score += delta;
+        }
+      });
+      return {players}
+    });
   }
 
   render() {
