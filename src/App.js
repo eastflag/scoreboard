@@ -1,51 +1,7 @@
 import React from 'react';
 import './App.css';
-
-const Header = () => {
-  return (
-    <header className='header'>
-      <h1 className='h1'>Scoreboard</h1>
-      <span className='stats'>Player: 1</span>
-    </header>
-  );
-}
-
-class Counter extends React.Component {
-  state = {
-    score: 0,
-    name: 'ldk'
-  }
-
-  handleScore = (delta) => {
-    // this.state.score += 1;
-    // this.setState({score: this.state.score + 1});
-    this.setState((prevState) => ({score: prevState.score + delta}));
-    //
-  }
-
-  render() {
-    return (
-      <div className="counter">
-        <button className='counter-action decrement' onClick={() => this.handleScore(-1)}> - </button>
-        <span className='counter-score'>{this.state.score}</span>
-        <button className='counter-action increment' onClick={() => this.handleScore(1)}> + </button>
-      </div>
-    );
-  }
-}
-
-const Player = (props) => {
-  console.log(props);
-  return (
-    <div className="player">
-      <span className='player-name'>
-        <button className='remove-player' onClick={() => props.removePlayer(props.id)}> x </button>
-        {props.name}
-      </span>
-      <Counter score={props.score}></Counter>
-    </div>
-  );
-}
+import {Header} from './components/Header';
+import {Player} from './components/Player';
 
 class App extends React.Component {
   state = {
