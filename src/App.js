@@ -40,6 +40,11 @@ class App extends React.Component {
     });
   }
 
+  handleAddPlayer = (name) => {
+    console.log('handleAddPlayer: ', name);
+    // players에 객체 추가
+  }
+
   render() {
     return (
       <div className="scoreboard">
@@ -53,7 +58,7 @@ class App extends React.Component {
                     changeScore={this.handleChangeScore}></Player>)
         }
 
-        <AddPlayerForm></AddPlayerForm>
+        <AddPlayerForm addPlayer={this.handleAddPlayer}></AddPlayerForm>
 
       </div>
     );
