@@ -25,6 +25,10 @@ class App extends React.Component {
     })
   }
 
+  handleChangeScore = (id, delta) => {
+    console.log('handleScore:', id, delta);
+  }
+
   render() {
     return (
       <div className="scoreboard">
@@ -34,7 +38,8 @@ class App extends React.Component {
           this.state.players.map(player =>
             <Player name={player.name} score={player.score} id={player.id} key={player.id}
               //2. 펑션을 props로 자식에게 내려준다.
-                    removePlayer={this.handleRemovePlayer}></Player>)
+                    removePlayer={this.handleRemovePlayer}
+                    changeScore={this.handleChangeScore}></Player>)
         }
 
       </div>
