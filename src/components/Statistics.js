@@ -1,9 +1,12 @@
 import React from 'react';
+import _ from 'lodash';
 
 export const Statistics = (props) => {
-  let totalPlayer = 0;
+  let totalPlayer = props.players.length;
   let totalScore = 0;
   // 로직 구현
+  // props.players.forEach(player => totalScore += player.score);
+  totalScore = _.sumBy(props.players, 'score');
 
   return (
     <table className='stats'>
