@@ -1,4 +1,4 @@
-import {ADD_PLAYER} from "../action_types";
+import {ADD_PLAYER, REMOVE_PLAYER} from "../action_types";
 
 let maxId = 4; // 임시적으로 설정
 
@@ -12,11 +12,20 @@ const playerInitlState = {
 }
 
 export const playerReducer = (state = playerInitlState, action) => {
+  let players;
 
   switch (action.type) {
     case ADD_PLAYER:
-      const players = [ ...state.players ];
+      players = [ ...state.players ];
       players.push({name: action.name, score: 0, id: ++maxId});
+      return {
+        ...state,
+        players
+      };
+    case REMOVE_PLAYER:
+      players = [ ...state.players ];
+      const index = players.findIndex(player => player.id === action.id)
+      players.splice(index, 1);
       return {
         ...state,
         players
