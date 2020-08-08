@@ -9,20 +9,6 @@ let maxId = 4; // 임시적으로 설정
 
 class App extends React.Component {
 
-  handleChangeScore = (id, delta) => {
-    console.log('handleScore:', id, delta);
-    // 로직 구현
-    this.setState(prevState => {
-      const players = [ ...prevState.players ];
-      players.forEach(player => {
-        if (player.id === id) {
-          player.score += delta;
-        }
-      });
-      return {players}
-    });
-  }
-
   render() {
     return (
       <div className="scoreboard">
@@ -30,8 +16,8 @@ class App extends React.Component {
 
         {
           this.props.players.map(player =>
-            <Player name={player.name} score={player.score} id={player.id} key={player.id}
-                    changeScore={this.handleChangeScore}></Player>)
+            <Player name={player.name} score={player.score}
+                    id={player.id} key={player.id}></Player>)
         }
 
         <AddPlayerForm></AddPlayerForm>
