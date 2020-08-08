@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import {Header} from './components/Header';
-import Player from './components/Player';
 import AddPlayerForm from "./components/AddPlayerForm";
 import {connect} from "react-redux";
+import {CustomPlayer} from "./components/CustomPlayer";
 
 let maxId = 4; // 임시적으로 설정
 
@@ -16,8 +16,8 @@ class App extends React.Component {
 
         {
           this.props.players.map(player =>
-            <Player name={player.name} score={player.score}
-                    id={player.id} key={player.id}></Player>)
+            <CustomPlayer name={player.name} score={player.score}
+                    id={player.id} key={player.id}></CustomPlayer>)
         }
 
         <AddPlayerForm></AddPlayerForm>
