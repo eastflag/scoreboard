@@ -1,9 +1,9 @@
-import {Counter} from "./Counter";
+import Counter from "./Counter";
 import React from "react";
 import {removePlayer} from "../redux/actions";
 import {connect} from "react-redux";
 
-export const Player = (props) => {
+const Player = (props) => {
   // console.log(props);
   return (
     <div className="player">
