@@ -1,3 +1,5 @@
+import {ADD_PLAYER} from "../action_types";
+
 let maxId = 4; // 임시적으로 설정
 
 const playerInitlState = {
@@ -10,5 +12,17 @@ const playerInitlState = {
 }
 
 export const playerReducer = (state = playerInitlState, action) => {
-  return state;
+
+  switch (action.type) {
+    case ADD_PLAYER:
+      const players = [ ...state.players ];
+      players.push({name: action.name, score: 0, id: ++maxId});
+      return {
+        ...state,
+        players
+      };
+    default:
+      return state;
+  }
+
 }
