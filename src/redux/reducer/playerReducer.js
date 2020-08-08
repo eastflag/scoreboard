@@ -31,7 +31,7 @@ export const playerReducer = (state = playerInitlState, action) => {
         players
       };
     case CHANGE_SCORE:
-      const players = [ ...state.players ];
+      players = [ ...state.players ];
       players.forEach(player => {
         if (player.id === action.id) {
           player.score += action.delta;
