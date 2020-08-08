@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {addPlayer} from "../redux/actions";
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 
-function AddPlayerForm(props) {
+function AddPlayerForm() {
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
   let handleValueChange = (e) => {
     setValue(e.target.value);
@@ -25,7 +26,7 @@ function AddPlayerForm(props) {
     }
 
     // name을 부모에게 넘겨서 부모가 player에 추가
-    props.addPlayer(value);
+    dispatch(addPlayer(value));
   }
 
   return (
@@ -38,9 +39,4 @@ function AddPlayerForm(props) {
   );
 }
 
-const mapActionToProps = (dispatch) => ({
-  // 왼쪽은 props, 오른쪽은 (액션을 디스패치하는) 펑션
-  addPlayer: (name) => dispatch(addPlayer(name))
-})
-
-export default connect(null, mapActionToProps)(AddPlayerForm);
+export default AddPlayerForm;
