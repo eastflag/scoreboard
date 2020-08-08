@@ -1,24 +1,15 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 export function Stopwatch() {
-  let tickRef;
 
   const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
-  useEffect(() => {
-    tickRef = setInterval(tick, 1000);
-    return () => {
-      clearInterval(tickRef);
-    }
-  }, [])
-
-  let tick = () => {
-    console.log('tick');
+  useInterval(() => {
     if (isRunning) {
       setTimer(timer + 1);
     }
-  }
+  }, 1000);
 
   let handleStopwatch = () => {
     setIsRunning(!isRunning);
@@ -34,4 +25,22 @@ export function Stopwatch() {
       <button>Reset</button>
     </div>
   )
+}
+
+// useEffect + setInterval 을 결합한 custom hook
+function useInterval(callback) {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  });
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    let id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 }
