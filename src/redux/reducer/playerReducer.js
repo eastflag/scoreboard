@@ -1,3 +1,5 @@
+let maxId = 4; // 임시적으로 설정
+
 const playerInitlState = {
   players: [
     {name: 'LDK', score: 0, id: 1},
