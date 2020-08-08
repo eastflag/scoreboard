@@ -1,17 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {addPlayer} from "../redux/actions";
 import {connect} from "react-redux";
 
-class AddPlayerForm extends React.Component {
-  state = {
-    value: ''
+function AddPlayerForm(props) {
+  const [value, setValue] = useState('');
+
+  let handleValueChange = (e) => {
+    setValue(e.target.value);
   }
 
-  handleValueChange = (e) => {
-    this.setState({value: e.target.value});
-  }
-
-  handleSubmit = (e) => {
+  let handleSubmit = (e) => {
     e.preventDefault();
 
     // 폼 유효성 검증
@@ -27,19 +25,17 @@ class AddPlayerForm extends React.Component {
     }
 
     // name을 부모에게 넘겨서 부모가 player에 추가
-    this.props.addPlayer(this.state.value);
+    props.addPlayer(value);
   }
 
-  render() {
-    return (
-      <form id="form" className="form" onSubmit={this.handleSubmit} noValidate>
-        <input id="player" className="input" type="text" placeholder="enter a plaeyr's name"
-          value={this.state.value} onChange={this.handleValueChange}
-          required />
-        <input className="input" value="Add Player" type="submit"/>
-      </form>
-    );
-  }
+  return (
+    <form id="form" className="form" onSubmit={handleSubmit} noValidate>
+      <input id="player" className="input" type="text" placeholder="enter a plaeyr's name"
+        value={value} onChange={handleValueChange}
+        required />
+      <input className="input" value="Add Player" type="submit"/>
+    </form>
+  );
 }
 
 const mapActionToProps = (dispatch) => ({

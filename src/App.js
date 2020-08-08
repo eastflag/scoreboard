@@ -6,8 +6,6 @@ import {connect} from "react-redux";
 import {CustomPlayer} from "./components/CustomPlayer";
 import _ from 'lodash';
 
-let maxId = 4; // 임시적으로 설정
-
 class App extends React.Component {
   /// highScore 구해서 리턴하다.
   getHighScore() {
