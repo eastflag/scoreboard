@@ -25,7 +25,7 @@ export class AddPlayerForm extends React.Component {
     }
 
     // name을 부모에게 넘겨서 부모가 player에 추가
-    this.props.addPlayer(this.state.value);
+    // this.props.addPlayer(this.state.value);
   }
 
   render() {

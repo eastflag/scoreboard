@@ -35,16 +35,6 @@ class App extends React.Component {
     });
   }
 
-  handleAddPlayer = (name) => {
-    console.log('handleAddPlayer: ', name);
-    // players에 객체 추가
-    this.setState(prevState => {
-      const players = [ ...prevState.players ];
-      players.push({name, score: 0, id: ++maxId});
-      return { players }
-    });
-  }
-
   render() {
     return (
       <div className="scoreboard">
@@ -58,7 +48,7 @@ class App extends React.Component {
                     changeScore={this.handleChangeScore}></Player>)
         }
 
-        <AddPlayerForm addPlayer={this.handleAddPlayer}></AddPlayerForm>
+        <AddPlayerForm></AddPlayerForm>
 
       </div>
     );
