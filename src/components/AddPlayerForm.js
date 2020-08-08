@@ -1,6 +1,8 @@
 import React from 'react';
+import {addPlayer} from "../redux/actions";
+import connect from "react-redux/lib/connect/connect";
 
-export class AddPlayerForm extends React.Component {
+class AddPlayerForm extends React.Component {
   state = {
     value: ''
   }
@@ -25,7 +27,7 @@ export class AddPlayerForm extends React.Component {
     }
 
     // name을 부모에게 넘겨서 부모가 player에 추가
-    // this.props.addPlayer(this.state.value);
+    this.props.addPlayer(this.state.value);
   }
 
   render() {
@@ -39,3 +41,10 @@ export class AddPlayerForm extends React.Component {
     );
   }
 }
+
+const mapActionToProps = (dispatch) => ({
+  // 왼쪽은 props, 오른쪽은 (액션을 디스패치하는) 펑션
+  addPlayer: (name) => dispatch(addPlayer(name))
+})
+
+export default connect(null, mapActionToProps)(AddPlayerForm);
