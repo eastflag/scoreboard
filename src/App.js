@@ -8,18 +8,6 @@ import {connect} from "react-redux";
 let maxId = 4; // 임시적으로 설정
 
 class App extends React.Component {
-  // 1. 펑션 작성
-  handleRemovePlayer = (id) => {
-    console.log('remove player: ', id);
-    // 로직 작성
-    this.setState(prevState => {
-      // immutable: 원본데이터가 불변 => 새로운 배열을 리턴
-      const players = [ ...prevState.players ];
-      const index = players.findIndex(player => player.id === id)
-      players.splice(index, 1);
-      return { players: players};
-    })
-  }
 
   handleChangeScore = (id, delta) => {
     console.log('handleScore:', id, delta);
@@ -43,8 +31,6 @@ class App extends React.Component {
         {
           this.props.players.map(player =>
             <Player name={player.name} score={player.score} id={player.id} key={player.id}
-              //2. 펑션을 props로 자식에게 내려준다.
-                    removePlayer={this.handleRemovePlayer}
                     changeScore={this.handleChangeScore}></Player>)
         }
 
